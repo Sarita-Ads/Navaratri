@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Navaratri Wishes</title>
+    <!-- Font Awesome for WhatsApp Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fce4ec; /* Light pink background */
+            color: #4a148c; /* Dark purple text */
+            text-align: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px 30px 30px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 90%;
+            margin: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        h1 {
+            color: #880e4f;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            animation: bounceIn 1s ease-in-out;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        input[type="text"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 20px; /* Increased gap */
+            border: 2px solid #ce93d8;
+            border-radius: 8px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #e91e63; /* Pink button */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #c2185b;
+        }
+        
+        .output-container {
+            margin-top: 25px; 
+        }
+
+        .generated-link-display {
+            background-color: #f3e5f5;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px dashed #ce93d8;
+            font-size: 1em;
+            word-wrap: break-word;
+            text-align: center;
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .whatsapp-share-button {
+            background-color: #25D366; 
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .whatsapp-share-button i {
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+        .whatsapp-share-button:hover {
+            background-color: #1DA851;
+        }
+
+        .hand-pointer {
+            font-size: 2.2em;
+            margin-top: 15px; 
+            margin-bottom: 0;
+            animation: pointUp 1.5s infinite;
+        }
+
+        /* --- STYLES FOR BANNER ADS --- */
+        .banner-ad-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ad-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .ad-modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 90%;
+            width: 350px;
+        }
+        .ad-modal-content h4 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .ad-modal-content button {
+            background-color: #4CAF50;
+            margin-top: 15px;
+        }
+
+        @keyframes pointUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); } 
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.1); opacity: 0; }
+            60% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .wishes-animation {
+            animation: textPop 1.5s ease-out forwards;
+        }
+        @keyframes textPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        #yourNameDisplay {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #c2185b;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+
+        <!-- === TOP BANNER AD CONTAINER === -->
+        <div class="banner-ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'f779ba3b20480386bc0541729a279e04',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/f779ba3b20480386bc0541729a279e04/invoke.js"></script>
+        </div>
+
+        <!-- Content for generating link -->
+        <div id="inputSection">
+            <h1>Navaratri Wishes!</h1>
+            <img src="20250918_121850.gif" alt="Mata Rani Animation">
+            <p id="initialPrompt">Apna naam enter karein aur ek shubh Navaratri sandesh link generate karein!</p>
+            <p id="yourNameDisplay"></p>
+            <input type="text" id="userName" placeholder="Yahaan apna naam likhein" required>
+            <button onclick="generateLinkAndDisplayOptions('userName')">Link Generate Karein</button>
+            
+            <div id="outputContainerInitial" class="output-container" style="display:none;">
+                <span id="generatedLinkInitial" class="generated-link-display" onclick="copyLink('generatedLinkInitial')"></span>
+                <button id="whatsappShareBtnInitial" class="whatsapp-share-button" onclick="shareOnWhatsApp('userName')">
+                    <i class="fab fa-whatsapp"></i> Share on WhatsApp
+                </button>
+                <p class="hand-pointer">👆</p>
+            </div>
+        </div>
+
+        <!-- Content for receiving wishes -->
+        <div id="wishesSection" style="display:none;">
+            <h1 class="wishes-animation">Happy Navaratri!</h1>
+            <p id="senderNameDisplay" class="wishes-animation"></p>
+            <img src="20250918_121850.gif" alt="Mata Rani Animation">
+            <p style="margin-top: 20px;">Aap bhi apna Navaratri sandesh bhejein!</p>
+            <input type="text" id="receiverName" placeholder="Yahaan apna naam likhein" required>
+            <button onclick="generateLinkAndDisplayOptions('receiverName')">Link Generate Karein</button>
+
+            <div id="outputContainerReply" class="output-container" style="display:none;">
+                <span id="generatedLinkReply" class="generated-link-display" onclick="copyLink('generatedLinkReply')"></span>
+                <button id="whatsappShareBtnReply" class="whatsapp-share-button" onclick="shareOnWhatsApp('receiverName')">
+                    <i class="fab fa-whatsapp"></i> Share on WhatsApp
+                </button>
+                <p class="hand-pointer">👆</p>
+            </div>
+        </div>
+
+        <!-- === BOTTOM BANNER AD CONTAINER === -->
+        <div class="banner-ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'f779ba3b20480386bc0541729a279e04',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/f779ba3b20480386bc0541729a279e04/invoke.js"></script>
+        </div>
+    </div>
+
+    <!-- AD MODAL (POP-UP) -->
+    <div id="adModal" class="ad-modal">
+        <div class="ad-modal-content">
+            <h4>Aapko WhatsApp par bheja ja raha hai...</h4>
+            <div id="container-fa1bed1504595e7da5543338e9b6e0d8"></div>
+            <button id="proceedToShareBtn">Share Now</button>
+        </div>
+    </div>
+
+    <script>
+        // --- VARIABLE TO TRACK LAST GENERATED NAME ---
+        let lastNameGenerated = '';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const sender = params.get('sender');
+
+            if (sender) {
+                document.getElementById('inputSection').style.display = 'none';
+                document.getElementById('wishesSection').style.display = 'block';
+                document.getElementById('senderNameDisplay').innerHTML = `By ${decodeURIComponent(sender)}`;
+            } else {
+                document.getElementById('inputSection').style.display = 'block';
+                document.getElementById('wishesSection').style.display = 'none';
+            }
+        });
+
+        // --- UPDATED FUNCTION - SMARTLINK IS REMOVED, POPUNDER SCRIPT HANDLES IT ---
+        function generateLinkAndDisplayOptions(inputElementId) {
+            const userNameInput = document.getElementById(inputElementId);
+            const userName = userNameInput.value.trim();
+
+            if (!userName) {
+                alert('Kripya apna naam enter karein!');
+                return;
+            }
+
+            // --- TRIGGER POPUNDER AD ONLY FOR NEW NAMES ---
+            // This logic ensures the ad doesn't fire on every single click
+            if (userName !== lastNameGenerated) {
+                // The main Popunder script loaded at the bottom handles the ad display on interaction.
+                // We just update the name tracker here.
+                lastNameGenerated = userName; 
+            }
+
+            const encodedName = encodeURIComponent(userName);
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareLink = `${baseUrl}?sender=${encodedName}`;
+            
+            let linkDisplayId, outputContainerId;
+            if (inputElementId === 'userName') {
+                linkDisplayId = 'generatedLinkInitial';
+                outputContainerId = 'outputContainerInitial';
+                document.getElementById('initialPrompt').style.display = 'none';
+                const yourNameDisplay = document.getElementById('yourNameDisplay');
+                yourNameDisplay.innerHTML = `Happy Navaratri By ${userName}`;
+                yourNameDisplay.style.display = 'block';
+            } else {
+                linkDisplayId = 'generatedLinkReply';
+                outputContainerId = 'outputContainerReply';
+            }
+
+            const linkDisplay = document.getElementById(linkDisplayId);
+            linkDisplay.innerText = shareLink;
+            document.getElementById(outputContainerId).style.display = 'block';
+        }
+
+        let redirectTimer; 
+
+        function shareOnWhatsApp(inputElementId) {
+            const userNameInput = document.getElementById(inputElementId);
+            const userName = userNameInput.value.trim();
+            if (!userName) {
+                alert('Pehle link generate karein!');
+                return;
+            }
+            const encodedName = encodeURIComponent(userName);
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareLink = `${baseUrl}?sender=${encodedName}`;
+            const message = `*Happy Navaratri By ${userName}!* ✨\n\nIs link par click karein aur shubh kamnayein prapt karein:\n${shareLink}`;
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            
+            const adModal = document.getElementById('adModal');
+            adModal.style.display = 'flex';
+
+            const proceedToWhatsApp = () => {
+                clearTimeout(redirectTimer); 
+                adModal.style.display = 'none';
+                window.open(whatsappUrl, '_blank');
+            };
+
+            document.getElementById('proceedToShareBtn').onclick = proceedToWhatsApp;
+            redirectTimer = setTimeout(proceedToWhatsApp, 4000);
+        }
+        
+        function copyLink(linkSpanId) {
+            const linkText = document.getElementById(linkSpanId).innerText;
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(linkText).then(() => {
+                    alert('Copied to clipboard');
+                }).catch(err => {
+                    alert('Link copy nahi ho paya.');
+                });
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = linkText;
+                textArea.style.position = 'absolute';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    alert('Copied to clipboard');
+                } catch (err) {
+                    alert('Is browser mein automatic copy support nahi hai.');
+                } finally {
+                    document.body.removeChild(textArea);
+                }
+            }
+        }
+    </script>
+
+    <!-- === ALL AD SCRIPTS ARE PLACED HERE AT THE END === -->
+
+    <!-- Native Banner Ad Script (for the popup) -->
+    <script async="async" data-cfasync="false" src="//pl27685773.revenuecpmgate.com/fa1bed1504595e7da5543338e9b6e0d8/invoke.js"></script>
+    
+    <!-- Social Bar Ads Script -->
+    <script type='text/javascript' src='//pl27675340.revenuecpmgate.com/7c/2a/fa/7c2afa0b269c5c0dadbf71251a0d81b0.js'></script>
+    
+    <!-- Popunder Ads Script (This will now run on the first user interaction on the page) -->
+    <script type='text/javascript' src='//pl27671159.revenuecpmgate.com/13/54/50/1354503e9259f6b93c3f1c6251e390ab.js'></script>
+
+</body>
+</html>
