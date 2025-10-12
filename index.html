@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Diwali Greeting</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+  body {
+    margin: 0; padding: 0;
+    background: url('Light.gif') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8rem;
+    color: #ffda03;
+    margin-top: 25px;
+    text-shadow: 0 0 20px #ffec80, 0 0 40px #ffda03;
+  }
+  .container {
+    margin-top: 0.5cm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .laxmi {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 0 25px rgba(255,193,7,0.8);
+  }
+  .name-box {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  input[type="text"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 180px;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .photo-upload {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    overflow: hidden;
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+  .photo-upload img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  /* Camera icon overlay */
+  .photo-upload::after {
+    content: "📷";
+    position: absolute;
+    font-size: 25px;
+    color: #555;
+    opacity: 0.7;
+  }
+  .photo-upload.has-photo::after {
+    display: none; /* hide icon when photo uploaded */
+  }
+  button {
+    margin-top: 18px;
+    padding: 10px 25px;
+    border: none; border-radius: 10px;
+    background: linear-gradient(90deg,#ffc107,#ff9800);
+    color: #000; font-weight: bold;
+    cursor: pointer; font-size: 1rem;
+  }
+  .result {
+    margin-top: 25px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffe57f;
+    text-shadow: 0 0 10px #ffca28;
+  }
+  .whatsapp-box {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #25d366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .whatsapp-box img {
+    width: 25px; height: 25px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Happy Diwali 🪔🪔</h1>
+
+<div class="container">
+  <img src="laxmi.gif" class="laxmi" alt="Laxmi Maa GIF" />
+
+  <div class="name-box">
+    <input type="text" id="userName" placeholder="Enter Your Name" />
+    <label for="photoInput" class="photo-upload" id="photoLabel">
+      <img id="preview" alt="Upload" />
+    </label>
+    <!-- ✅ Camera + Gallery both access -->
+    <input type="file" id="photoInput" accept="image/*" capture="environment" hidden />
+  </div>
+
+  <button onclick="generateMessage()">Check Preview</button>
+
+  <div class="result" id="resultText"></div>
+
+  <a id="whatsappShare" class="whatsapp-box" style="display:none;" target="_blank">
+    <img src="photo.gif" alt="WA Emoji" />
+    Share on WhatsApp
+  </a>
+</div>
+
+<script>
+  const photoInput = document.getElementById("photoInput");
+  const preview = document.getElementById("preview");
+  const photoLabel = document.getElementById("photoLabel");
+  const resultText = document.getElementById("resultText");
+  const whatsappBtn = document.getElementById("whatsappShare");
+
+  // ✅ photo preview + camera icon hide
+  photoInput.addEventListener("change", () => {
+    const file = photoInput.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        preview.src = e.target.result;
+        photoLabel.classList.add("has-photo");
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  function generateMessage() {
+    const name = document.getElementById("userName").value.trim();
+    if (!name) { alert("कृपया अपना नाम डालें!"); return; }
+
+    const msg = `🪔 Happy Diwali By ${name} 🪔`;
+    resultText.innerText = msg;
+
+    const shareUrl = `${window.location.origin}${window.location.pathname}?name=${encodeURIComponent(name)}`;
+    history.replaceState(null, "", shareUrl);
+
+    const whatsappLink = `https://wa.me/?text=${encodeURIComponent("🎉 " + msg + " 🎊\n" + shareUrl)}`;
+    whatsappBtn.href = whatsappLink;
+    whatsappBtn.style.display = "inline-flex";
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const preName = params.get("name");
+  if (preName) {
+    resultText.innerText = `🪔 Happy Diwali By ${preName} 🪔`;
+    const shareUrl = window.location.href;
+    const whatsappLink = `https://wa.me/?text=${encodeURIComponent("🎉 Happy Diwali By " + preName + " 🎊\n" + shareUrl)}`;
+    whatsappBtn.href = whatsappLink;
+    whatsappBtn.style.display = "inline-flex";
+  }
+</script>
+
+<!-- Adsterra Integration (replace below code with your ad script) -->
+<!-- <script type="text/javascript" src="https://www.profitablecreativeformat.com/ad.js"></script> -->
+
+</body>
+</html>
