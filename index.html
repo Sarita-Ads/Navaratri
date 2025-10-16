@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Diwali Greeting</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #fff;
+    overflow-x: hidden;
+    background-color: #000; /* fallback */
+    background-image: url('Light.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8rem;
+    color: #ffda03;
+    margin-top: 25px;
+    text-shadow: 0 0 20px #ffec80, 0 0 40px #ffda03;
+  }
+  .container {
+    margin-top: 0.5cm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .laxmi {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 0 25px rgba(255,193,7,0.8);
+  }
+  .name-box {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  input[type="text"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 180px;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .photo-upload {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid #ffca28;
+  }
+  .photo-upload img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .upload-text {
+    margin-top: 3px;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #ffe57f;
+    text-shadow: 0 0 8px #ffca28, 0 0 20px #ffda03;
+  }
+  button {
+    margin-top: 18px;
+    padding: 10px 25px;
+    border: none; border-radius: 10px;
+    background: linear-gradient(90deg,#ffc107,#ff9800);
+    color: #000; font-weight: bold;
+    cursor: pointer; font-size: 1rem;
+  }
+  .result {
+    margin-top: 25px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffe57f;
+    text-shadow: 0 0 10px #ffca28;
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .result img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .whatsapp-box {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #25d366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .whatsapp-box img {
+    width: 25px; height: 25px;
+  }
+  .cta-box {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #ff9800;
+    color: #000;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Happy Diwali</h1>
+
+<div class="container">
+  <img src="laxmi.gif" class="laxmi" alt="Laxmi Maa GIF" />
+
+  <div class="name-box" id="nameBox">
+    <div class="input-row" id="inputRow">
+      <input type="text" id="userName" placeholder="Enter Your Name" />
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <label for="photoInput" class="photo-upload" id="photoLabel">
+          <img id="preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Default Profile" />
+        </label>
+        <p class="upload-text">*Upload Your Photo*</p>
+      </div>
+    </div>
+    <input type="file" id="photoInput" accept="image/*" hidden />
+  </div>
+
+  <button onclick="generateMessage()" id="previewBtn">Check Preview</button>
+
+  <div class="result" id="resultText"></div>
+
+  <a id="whatsappShare" class="whatsapp-box" style="display:none;" target="_blank">
+    <img src="photo.gif" alt="WA Emoji" />
+    Share on WhatsApp
+  </a>
+
+  <!-- Call to action box for second user -->
+  <div id="ctaBox" class="cta-box" style="display:none;" onclick="window.location.href='https://Navaratri2025.vercel.app'">
+    👆 Do you also want to send this greeting message?
+  </div>
+</div>
+
+<script>
+const photoInput = document.getElementById("photoInput");
+const preview = document.getElementById("preview");
+const resultText = document.getElementById("resultText");
+const whatsappBtn = document.getElementById("whatsappShare");
+const inputRow = document.getElementById("inputRow");
+const ctaBox = document.getElementById("ctaBox");
+
+// Photo preview
+photoInput.addEventListener("change", () => {
+  const file = photoInput.files[0];
+  if(file){
+    const reader = new FileReader();
+    reader.onload = (e) => { preview.src = e.target.result; };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Generate greeting with photo
+function generateMessage(){
+  const name = document.getElementById("userName").value.trim();
+  if(!name){ resultText.innerText="Please enter your name!"; return; }
+
+  resultText.innerHTML = `<img src="${preview.src}" alt="User Photo" /> ${name}`;
+  
+  const shareUrl = `${window.location.origin}${window.location.pathname}?name=${encodeURIComponent(name)}`;
+  history.replaceState(null,"",shareUrl);
+
+  const whatsappLink = `https://wa.me/?text=${encodeURIComponent("Happy Diwali By "+name+"\n"+shareUrl)}`;
+  whatsappBtn.href = whatsappLink;
+  whatsappBtn.style.display = "inline-flex";
+}
+
+// Check if user arrived via shared link
+const params = new URLSearchParams(window.location.search);
+const preName = params.get("name");
+if(preName){
+  // Hide input for first user greeting
+  inputRow.style.display = "none";
+  document.getElementById("previewBtn").style.display = "none";
+  
+  // Show first user's greeting
+  resultText.innerText = `Happy Diwali By ${preName}`;
+  const shareUrl = window.location.href;
+  const whatsappLink = `https://wa.me/?text=${encodeURIComponent("Happy Diwali By " + preName + "\n" + shareUrl)}`;
+  whatsappBtn.href = whatsappLink;
+  whatsappBtn.style.display = "inline-flex";
+
+  // Show CTA box for second user
+  ctaBox.style.display = "flex";
+}
+
+// SMARTLINK logic
+whatsappBtn.addEventListener("click", () => { localStorage.setItem("shared","true"); });
+window.addEventListener("load", ()=>{
+  if(localStorage.getItem("shared")){
+    localStorage.removeItem("shared");
+    window.open("https://www.effectivegatecpm.com/ezh3vu5d16?key=f8b5159375191700227136fd64d75810","_blank");
+  }
+});
+</script>
+
+<!-- POPUNDER AD CODE -->
+<script type="text/javascript" src="//pl27834626.effectivegatecpm.com/1c/1c/4e/1c1c4e6fe27f1ea5c4d2c38a051d4bec.js"></script>
+
+</body>
+</html>
